@@ -11,7 +11,7 @@ export default function MarketingPage() {
       <section className={cn("flex flex-col items-center justify-center", calSans.className)}>
         <div className="flex justify-center items-center gap-3 bg-amber-100 text-amber-700 mb-4 px-4 py-2 uppercase border shadow-sm rounded-full">
           <Medal className="w-6 h-6" />
-          <h3>No 1 Task Management App</h3>
+          <h3 className="[word-spacing:0.25rem]">No 1 Task Management App</h3>
         </div>
         <h1 className="text-3xl md:text-6xl text-center mb-6 text-neutral-600">
           Taskzone helps team move

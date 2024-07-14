@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
-import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkLoaded, ClerkLoading, ClerkProvider } from "@clerk/nextjs";
+import { Loader } from "lucide-react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -68,10 +69,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider afterSignOutUrl="/">
-      <html lang="en">
-        <body className={inter.className}>{children}</body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <ClerkProvider
+        afterSignOutUrl="/"
+        appearance={{
+          elements: {
+            avatarBox: "size-8",
+            rootBox: "flex justify-center items-center",
+          },
+        }}
+      >
+        <body className={`${inter.className}`}>
+          <ClerkLoading>
+            <div className="flex justify-center items-center min-h-screen w-full">
+              <Loader className="size-12 animate-spin" />
+            </div>
+          </ClerkLoading>
+          <ClerkLoaded>{children}</ClerkLoaded>
+        </body>
+      </ClerkProvider>
+    </html>
   );
 }

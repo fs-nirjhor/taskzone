@@ -6,9 +6,9 @@ export default function MarketingLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <main className="flex min-h-screen flex-col justify-between bg-slate-100">
+  return <main className="min-h-screen flex flex-col justify-between bg-slate-100">
     <Navbar />
-    <article className="pt-40 pb-24 bg-slate-100">{children}</article>
+    <article className="pt-40 pb-24 px-2 bg-slate-100">{children}</article>
     <Footer />
   </main>;
 }
