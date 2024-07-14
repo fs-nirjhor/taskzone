@@ -79,7 +79,7 @@ export default function RootLayout({
           },
         }}
       >
-        <body className={`${inter.className}`}>
+        <body className={inter.className}>
           <ClerkLoading>
             <div className="flex justify-center items-center min-h-screen w-full">
               <Loader className="size-12 animate-spin" />
