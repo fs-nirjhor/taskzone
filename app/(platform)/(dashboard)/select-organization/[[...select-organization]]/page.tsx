@@ -5,8 +5,8 @@ export default function OrganizationListPage() {
     <div className="flex justify-center items-center">
       <OrganizationList
         hidePersonal
-        afterCreateOrganizationUrl="/organization/:slug"
-        afterSelectOrganizationUrl="/organization/:slug"
+        afterCreateOrganizationUrl="/organization/:id"
+        afterSelectOrganizationUrl="/organization/:id"
       />
     </div>
   );

@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
-import { ClerkLoaded, ClerkLoading, ClerkProvider } from "@clerk/nextjs";
-import { Loader } from "lucide-react";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -80,12 +79,7 @@ export default function RootLayout({
         }}
       >
         <body className={inter.className}>
-          <ClerkLoading>
-            <div className="flex justify-center items-center min-h-screen w-full">
-              <Loader className="size-12 animate-spin" />
-            </div>
-          </ClerkLoading>
-          <ClerkLoaded>{children}</ClerkLoaded>
+          {children}
         </body>
       </ClerkProvider>
     </html>

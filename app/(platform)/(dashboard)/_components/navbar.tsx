@@ -21,8 +21,8 @@ export const Navbar = () => {
         <div className="flex items-center justify-end gap-4">
           <OrganizationSwitcher
             hidePersonal
-            afterSelectOrganizationUrl="/organization/:slug"
-            afterCreateOrganizationUrl="/organization/:slug"
+            afterSelectOrganizationUrl="/organization/:id"
+            afterCreateOrganizationUrl="/organization/:id"
             afterLeaveOrganizationUrl="/select-organization"
           />
           <UserButton />
