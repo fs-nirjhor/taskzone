@@ -9,7 +9,7 @@ const DashboardLayout = ({
   return <main className="min-h-screen flex flex-col justify-between bg-slate-100">
     {/* TODO: Mobile navbar */}
     <Navbar />
-    <article className="pt-20 pb-20 px-2">{children}</article>
+    <article className="pt-24 pb-24 px-4">{children}</article>
     <Footer />
   </main>;
 };

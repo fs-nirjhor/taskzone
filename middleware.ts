@@ -10,17 +10,17 @@ const publicRouteMatcher = createRouteMatcher([
 export default clerkMiddleware((auth, req) => {
   const { userId, orgSlug, protect } = auth();
   const isPublicRoute = publicRouteMatcher(req);
-  // if its not a public route we protect it
+  // if its not a public route and the user is not logged in we redirect to /sign-in
   if (!isPublicRoute) protect();
-  if (userId && isPublicRoute) {
-    // if the user is logged in and its a public route we send to select organization
+  //* logged in user can't visit public route
+  if (userId) {
+    //* logged in user must have an organization
     let path = "/select-organization";
     if (orgSlug) {
-      // if the user has selected organization we send to that organization
       path = `/organization/${orgSlug}`;
     }
+    // if user is not on correct page we redirect to it
     if (req.nextUrl.pathname !== path) {
-      // if user is not on correct page we redirect to it
       return NextResponse.redirect(new URL(path, req.url));
     }
   }
