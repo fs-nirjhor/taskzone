@@ -14,7 +14,9 @@ interface SidebarProps {
   storageKey?: string;
 }
 
-export const Sidebar = ({ storageKey = "tz-sidebar-expanded" }: SidebarProps) => {
+export const Sidebar = ({
+  storageKey = "tz-sidebar-expanded",
+}: SidebarProps) => {
   const [expanded, setExpanded] = useLocalStorage<Record<string, any>>(
     storageKey,
     {}
@@ -38,16 +40,24 @@ export const Sidebar = ({ storageKey = "tz-sidebar-expanded" }: SidebarProps) =>
   if (!isLoadedOrg || !isLoadedOrgList || userMemberships?.isLoading) {
     return (
       <>
-        <Skeleton />
+        <div className="mb-2 flex items-center justify-between">
+          <Skeleton className="pl-4 w-1/2 h-3" />
+          <Skeleton className="size-5" />
+        </div>
+        <div className="space-y-2">
+          <NavItem.Skeleton />
+          <NavItem.Skeleton />
+          <NavItem.Skeleton />
+        </div>
       </>
     );
   }
 
   return (
     <>
-      <div className="font-medium text-xs mb-1 flex items-center">
+      <div className="font-medium text-xs mb-1 flex items-center justify-between">
         <span className="pl-4">Workspaces</span>
-        <Button variant="ghost" size="icon" type="button" className="ml-auto">
+        <Button variant="ghost" size="icon" type="button">
           <Link href="/select-organization">
             <Plus className="size-4" />
           </Link>
@@ -58,7 +68,7 @@ export const Sidebar = ({ storageKey = "tz-sidebar-expanded" }: SidebarProps) =>
         defaultValue={defaultAccordionValue}
         className="space-y-2"
       >
-        {userMemberships?.data.map(({organization}) => (
+        {userMemberships?.data.map(({ organization }) => (
           <NavItem
             key={organization.id}
             isActive={organization.id === activeOrganization?.id}

@@ -7,6 +7,7 @@ import { Activity, CreditCard, Layout, Settings } from "lucide-react";
 
 import { OrganizationResource } from "@clerk/types";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface NavItemProps {
   isActive?: boolean;
@@ -92,3 +93,10 @@ export const NavItem = ({
     </AccordionItem>
   );
 };
+
+NavItem.Skeleton = function NavItemSkeleton () {
+  return <div className="w-full flex items-center gap-x-2">
+    <Skeleton className="size-7" />
+    <Skeleton className="w-1/2 h-3" />
+  </div>;
+}
