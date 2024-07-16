@@ -7,7 +7,6 @@ const DashboardLayout = ({
     children: React.ReactNode;
   }>) => {
   return <main className="min-h-screen flex flex-col justify-between bg-slate-100">
-    {/* TODO: Mobile navbar */}
     <Navbar />
     <article className="pt-20 md:pt-24 pb-24 px-4 w-full max-w-6xl 2xl:max-w-screen-xl mx-auto">{children}</article>
     <Footer />
