@@ -14,8 +14,8 @@ export const Navbar = () => {
           <Button size="sm" variant="primary" className="hidden md:block">
             Create
           </Button>
-          <Button size="sm" variant="primary" className="block md:hidden">
-            <Plus className="size-6" />
+          <Button size="icon" variant="primary" className="block md:hidden">
+            <Plus className="size-6 mx-auto" />
           </Button>
         </div>
         <div className="flex items-center justify-end gap-4">
