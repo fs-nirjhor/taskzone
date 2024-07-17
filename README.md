@@ -1,7 +1,13 @@
-#Taskzone : [Live](https://taskzone.vercel.app)
-Fullstack Trello Clone: Next.js 14, Server Actions, React, Prisma, Stripe, Tailwind, ShadcnUI, MySQL, TypeScript, Zod, Clerk
+# Taskzone : Fullstack Trello Clone
 
-##Key Features:
+## [Live View](https://taskzone.vercel.app)
+
+### Key Features:
+- Next.js 14 with React
+- TypeScript
+- Design with shadcnUI & TailwindCSS
+- Validation with Zod
+- Server Actions
 - Clerk Authentication & Authorization
 - Organizations / Workspaces for each user
 - Board creation
@@ -14,10 +20,7 @@ Fullstack Trello Clone: Next.js 14, Server Actions, React, Prisma, Stripe, Tailw
 - Card description, rename, delete, drag & drop reorder and copy
 - Card activity log
 - Board limit for every organization
-- Stripe subscription for each organization to unlock unlimited boards
 - Landing page
+- Stripe subscription for each organization to unlock unlimited boards
 - MySQL DB
 - Prisma ORM
-- Design with shadcnUI & TailwindCSS
-- Server Actions
-- Validation with Zod
