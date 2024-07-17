@@ -71,12 +71,6 @@ export default function RootLayout({
     <html lang="en">
       <ClerkProvider
         afterSignOutUrl="/"
-        appearance={{
-          elements: {
-            avatarBox: "size-8",
-            rootBox: "flex justify-center items-center",
-          },
-        }}
       >
         <body className={inter.className}>
           {children}

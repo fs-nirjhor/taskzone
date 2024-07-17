@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { OrgControl } from "./_components/org-control";
 
-export default function Organization({
+export default function OrganizationIdPage({
   params: { organizationId },
 }: {
   params: { organizationId: string };
