@@ -1,4 +1,4 @@
-# Taskzone : Fullstack Trello Clone
+# ![Taskzone](https://capsule-render.vercel.app/api?type=rect&color=gradient&height=200&section=header&text=Taskzone&fontSize=90&fontColor=auto) <p align="center">Fullstack Trello Clone</p>
 
 ## [Live View](https://taskzone.vercel.app)
 
@@ -22,5 +22,6 @@
 - Board limit for every organization
 - Landing page
 - Stripe subscription for each organization to unlock unlimited boards
-- MySQL DB
+- PostgreSQL DB
 - Prisma ORM
+

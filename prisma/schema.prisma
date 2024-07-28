@@ -1,0 +1,38 @@
+
+//* Prisma commands
+//TODO: run `npm i -D prisma` to install
+//TODO: run `npx prisma init` to initiate prisma setup
+//TODO: run `npx prisma generate` when create or modify a model 
+//TODO: run `npx prisma db push` to sync database with supabase
+//TODO: run `npx prisma studio` to view database localy
+
+generator client {
+  provider = "prisma-client-js"
+}
+//// using supabase for url
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Board {
+  id String @id @default(uuid())
+  title String
+}
+
+// model Post {
+//   id        Int     @id @default(autoincrement())
+//   title     String
+//   content   String?
+//   published Boolean @default(false)
+//   author    User?   @relation(fields: [authorId], references: [id])
+//   authorId  Int?
+// }
+
+// model User {
+//   id    Int     @id @default(autoincrement())
+//   email String  @unique
+//   name  String?
+//   posts Post[]
+// }

@@ -8,6 +8,7 @@ export const OrgControl = () => {
   const { organizationId } = useParams();
   const { setActive } = useOrganizationList();
 
+  //* This will change the clerk organization to following organization of route 
   useEffect(() => {
     if (!setActive) return;
     setActive({ organization: organizationId as string } as any);

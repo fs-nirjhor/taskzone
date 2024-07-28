@@ -1,4 +1,5 @@
 import { Sidebar } from "../../_components/sidebar";
+import { OrgControl } from "./_components/org-control";
 
 const OrganizationLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -7,6 +8,8 @@ const OrganizationLayout = ({ children }: { children: React.ReactNode }) => {
         <Sidebar />
       </div>
       {children}
+      {/* Change organization by nav */}
+      <OrgControl />
     </div>
   );
 };
