@@ -1,26 +1,35 @@
 "use client";
-import { CreateButton } from "./create-button";
-import { TitleInput } from "./title-input";
 import { UseAction } from "@/hooks/use-action";
 import { createBoard } from "@/actions/create-board";
+import { FormInput } from "@/components/form/form-input";
+import { FormSubmit } from "@/components/form/form-submit";
 
 export const Form = () => {
   // const initialState: State = { message: null, errors: {} };
   // const [state, dispatch] = useFormState(createBoard, initialState);
-  const {fieldErrors, isLoading, execute } = UseAction(createBoard, {
-    onSuccess: (data) => {console.log("Success: ", data); },
-    onError: (error) => {console.log(error)}
-  })
-  const onSubmit = (formData : FormData) => {
+  const { fieldErrors, isLoading, execute } = UseAction(createBoard, {
+    onSuccess: (data) => {
+      console.log("Success: ", data);
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+  const onSubmit = (formData: FormData) => {
     const title = formData.get("title") as string;
-    execute({title})
-  }
+    execute({ title });
+  };
   return (
-    <form action={onSubmit} className="flex">
+    <form action={onSubmit} className="space-y-5">
       <div className="flex flex-col gap-y-1">
-        <TitleInput errors={fieldErrors?.title} isLoading={isLoading}/>
+        <FormInput
+          id="title"
+          label="Board Title"
+          errors={fieldErrors}
+          disabled={isLoading}
+        />
       </div>
-      <CreateButton isLoading={isLoading} />
+      <FormSubmit disabled={isLoading}>Save</FormSubmit>
     </form>
   );
 };
