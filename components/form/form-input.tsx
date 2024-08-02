@@ -56,7 +56,7 @@ export const FormInput = forwardRef<HTMLFormElement, FormInputProps>(
             disabled = {disabled || pending}
             defaultValue = {defaultValue}
             onBlur = {onBlur}
-            className = {cn("text-sm px-2 py-1 h-7", className)}
+            className = {cn("text-sm px-2 py-1 h-8", className)}
             aria-describedby={`${id}-error`}
           />
         </div>

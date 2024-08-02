@@ -5,8 +5,6 @@ import { FormInput } from "@/components/form/form-input";
 import { FormSubmit } from "@/components/form/form-submit";
 
 export const Form = () => {
-  // const initialState: State = { message: null, errors: {} };
-  // const [state, dispatch] = useFormState(createBoard, initialState);
   const { fieldErrors, isLoading, execute } = UseAction(createBoard, {
     onSuccess: (data) => {
       console.log("Success: ", data);
@@ -25,6 +23,7 @@ export const Form = () => {
         <FormInput
           id="title"
           label="Board Title"
+          placeholder="Title"
           errors={fieldErrors}
           disabled={isLoading}
         />
