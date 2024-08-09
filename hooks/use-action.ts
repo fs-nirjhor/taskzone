@@ -41,6 +41,8 @@ export const UseAction = <TInput, TOutput>(
           setData(result.data);
           options.onSuccess?.(result.data);
         }
+        // set or remove field errors 
+        setFieldErrors(result.fieldErrors);
       } finally {
         setIsLoading(false)
         options.onComplete?.()
