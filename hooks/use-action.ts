@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback, useState } from "react";
 import { ActionState, FieldErrors } from "@/lib/create-safe-action";
 
@@ -41,14 +43,14 @@ export const UseAction = <TInput, TOutput>(
           setData(result.data);
           options.onSuccess?.(result.data);
         }
-        // set or remove field errors 
+        // set or remove field errors
         setFieldErrors(result.fieldErrors);
       } finally {
-        setIsLoading(false)
-        options.onComplete?.()
+        setIsLoading(false);
+        options.onComplete?.();
       }
     },
     [action, options]
   );
-  return {data, fieldErrors, error, isLoading, execute }
+  return { data, fieldErrors, error, isLoading, execute };
 };
