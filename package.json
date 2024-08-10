@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "fs-nirjhor",
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

@@ -12,6 +12,7 @@ import { FormInput } from "./form-input";
 import { FormSubmit } from "./form-submit";
 import { createBoard } from "@/actions/create-board";
 import { UseAction } from "@/hooks/use-action";
+import { toast } from "sonner";
 
 interface FormPopoverProps {
   children: React.ReactNode;
@@ -26,18 +27,19 @@ export const FormPopover = ({
   align,
   sideOffset,
 }: FormPopoverProps) => {
-  const { execute, fieldErrors } = UseAction(createBoard, {
+  const { execute, fieldErrors, isLoading } = UseAction(createBoard, {
     onSuccess: (data) => {
-      console.log("Success: ", {data});
+      console.log("Success: ", { data });
+      toast.success("Board created");
     },
     onError: (error) => {
-      console.log({error});
+      toast.error(error);
     },
   });
   const onSubmit = (formData: FormData) => {
     const title = formData.get("title") as string;
     execute({ title });
-  }
+  };
   return (
     <Popover>
       <PopoverTrigger asChild>{children}</PopoverTrigger>
@@ -61,9 +63,17 @@ export const FormPopover = ({
         </PopoverClose>
         <form action={onSubmit} className="space-y-4">
           <div className="space-y-4">
-            <FormInput type="text" id="title" label="Board Title" errors={fieldErrors} />
+            <FormInput
+              type="text"
+              id="title"
+              label="Board Title"
+              errors={fieldErrors}
+              disabled={isLoading}
+            />
           </div>
-          <FormSubmit className="w-full">Create</FormSubmit>
+          <FormSubmit className="w-full" disabled={isLoading}>
+            Create
+          </FormSubmit>
         </form>
       </PopoverContent>
     </Popover>
