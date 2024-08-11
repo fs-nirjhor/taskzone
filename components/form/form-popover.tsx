@@ -13,6 +13,7 @@ import { FormSubmit } from "./form-submit";
 import { createBoard } from "@/actions/create-board";
 import { UseAction } from "@/hooks/use-action";
 import { toast } from "sonner";
+import { FormPicker } from "./form-picker";
 
 interface FormPopoverProps {
   children: React.ReactNode;
@@ -75,6 +76,7 @@ export const FormPopover = ({
             Create
           </FormSubmit>
         </form>
+        <FormPicker id="image" errors={fieldErrors} />
       </PopoverContent>
     </Popover>
   );
