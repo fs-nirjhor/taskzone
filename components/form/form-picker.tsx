@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { toast } from "sonner";
+import { FormErrors } from "./form-errors";
 
 interface FormPickerProps {
   id: string;
@@ -15,7 +16,8 @@ interface FormPickerProps {
 }
 
 export const FormPicker = ({ id, errors }: FormPickerProps) => {
-  const [images, setImages] = useState<Array<Record<string, any>>>(defaultImages);
+  const [images, setImages] =
+    useState<Array<Record<string, any>>>(defaultImages);
   const [selectedimageId, setSelectedimageId] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { pending } = useFormStatus();
@@ -70,6 +72,16 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
               setSelectedimageId(image.id);
             }}
           >
+            <input
+              type="radio"
+              id={id}
+              name={id}
+              className="hidden"
+              checked={selectedimageId === image.id}
+              disabled={pending}
+              value={`${image.id}|${image.urls.thumb}|${image.urls.full}|${image.links.html}|${image.user.name}`}
+              readOnly
+            />
             <Image
               src={image.urls.thumb}
               alt="Unsplash"
@@ -85,13 +97,14 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
             <Link
               href={image.links.html}
               target="_blank"
-              className="opacity-0 group-hover:opacity-100 absolute bottom-0 w-full text-xs text-[10px] truncate text-white hover:underline bg-black/30 text-center"
+              className="opacity-0 group-hover:opacity-100 absolute bottom-0 w-full text-[10px] truncate text-white hover:underline bg-black/30 text-center"
             >
               {image.user.name}
             </Link>
           </div>
         ))}
       </div>
+      <FormErrors id={id} errors={errors} />
     </div>
   );
 };
