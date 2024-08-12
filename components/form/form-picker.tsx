@@ -1,8 +1,10 @@
 "use client";
+import { defaultImages } from "@/constants/images";
 import { unsplash } from "@/lib/unsplash";
 import { cn } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { toast } from "sonner";
@@ -13,7 +15,7 @@ interface FormPickerProps {
 }
 
 export const FormPicker = ({ id, errors }: FormPickerProps) => {
-  const [images, setImages] = useState<Array<Record<string, any>>>([]);
+  const [images, setImages] = useState<Array<Record<string, any>>>(defaultImages);
   const [selectedimageId, setSelectedimageId] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { pending } = useFormStatus();
@@ -36,7 +38,7 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
       } catch (error: any) {
         console.error(error);
         toast.error(error?.message as string);
-        setImages([]);
+        //setImages([]);
       } finally {
         setIsLoading(false);
       }
@@ -75,6 +77,13 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
               priority={selectedimageId === image.id}
               fill
             />
+            <Link
+              href={image.links.html}
+              target="_blank"
+              className="opacity-0 group-hover:opacity-100 absolute bottom-0 w-full text-xs truncate text-white hover:underline p-1 bg-black/50 text-center"
+            >
+              {image.user.name}
+            </Link>
           </div>
         ))}
       </div>

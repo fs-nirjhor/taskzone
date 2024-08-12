@@ -62,6 +62,7 @@ export const FormPopover = ({
             <X className="size-4" />
           </Button>
         </PopoverClose>
+        <FormPicker id="image" errors={fieldErrors} />
         <form action={onSubmit} className="space-y-4">
           <div className="space-y-4">
             <FormInput
@@ -76,7 +77,6 @@ export const FormPopover = ({
             Create
           </FormSubmit>
         </form>
-        <FormPicker id="image" errors={fieldErrors} />
       </PopoverContent>
     </Popover>
   );
