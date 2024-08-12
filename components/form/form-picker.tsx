@@ -2,7 +2,7 @@
 import { defaultImages } from "@/constants/images";
 import { unsplash } from "@/lib/unsplash";
 import { cn } from "@/lib/utils";
-import { Loader2 } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -77,10 +77,15 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
               priority={selectedimageId === image.id}
               fill
             />
+            {selectedimageId === image.id && (
+              <div className="size-full absolute top-0 left-0 bg-black/50 flex items-center justify-center">
+                <Check className="size-4 text-white" />
+              </div>
+            )}
             <Link
               href={image.links.html}
               target="_blank"
-              className="opacity-0 group-hover:opacity-100 absolute bottom-0 w-full text-xs truncate text-white hover:underline p-1 bg-black/50 text-center"
+              className="opacity-0 group-hover:opacity-100 absolute bottom-0 w-full text-xs text-[10px] truncate text-white hover:underline bg-black/30 text-center"
             >
               {image.user.name}
             </Link>
