@@ -7,7 +7,7 @@ import { calSans, poppins } from "@/lib/fonts";
 
 export default function MarketingPage() {
   return (
-    <main className="flex flex-col items-center justify-center">
+    <main className="h-full pt-40 pb-24 px-4 flex flex-col items-center justify-center">
       <section className={cn("flex flex-col items-center justify-center", calSans.className)}>
         <div className="flex justify-center items-center gap-3 bg-amber-100 text-amber-700 mb-4 px-4 py-2 uppercase border shadow-sm rounded-full">
           <Medal className="w-6 h-6" />
@@ -25,7 +25,7 @@ export default function MarketingPage() {
         piority tasks to due dates in seconds, the way your team works is unique
         - accomplish it all with Taskzone.
       </p>
-      <Button variant="default" className="mx-auto mt-8" size="lg" asChild>
+      <Button variant="default" className="mx-auto mt-8" asChild>
         <Link href="/signup">Get Taskzone for free</Link>
       </Button>
     </main>

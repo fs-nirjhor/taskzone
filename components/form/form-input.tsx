@@ -19,7 +19,7 @@ interface FormInputProps {
   onBlur?(): void;
 }
 
-export const FormInput = forwardRef<HTMLFormElement, FormInputProps>(
+export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
   (
     {
       id,
@@ -58,6 +58,7 @@ export const FormInput = forwardRef<HTMLFormElement, FormInputProps>(
             onBlur = {onBlur}
             className = {cn("text-sm px-2 py-1 h-8", className)}
             aria-describedby={`${id}-error`}
+            ref={ref}
           />
         </div>
         <FormErrors id={id} errors={errors} /> 
