@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const CreateBoard = z.object({
+export const UpdateBoard = z.object({
   title: z
     .string({
       required_error: "Title is required", // check undefined or null. (will not check empty string)
@@ -20,8 +20,8 @@ export const CreateBoard = z.object({
         });
       }
     }),
-  image: z.string({
-    required_error: "Image is required",
-    invalid_type_error: "Invalid image",
+  id: z.string({
+    required_error: "Id is required",
+    invalid_type_error: "Invalid id",
   }),
 });
