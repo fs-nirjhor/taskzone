@@ -32,6 +32,7 @@ export const BoardTitleForm = ({ data }: BoardTitleFormProps) => {
       }
     },
   });
+
   const enableEditing = () => {
     setIsEditing(true);
     setTimeout(() => {
@@ -39,13 +40,16 @@ export const BoardTitleForm = ({ data }: BoardTitleFormProps) => {
       inputRef.current?.select();
     });
   };
+
   const disableEditing = () => {
     setIsEditing(false);
     formRef.current?.reset();
   };
+
   const onBlur = () => {
     formRef.current?.requestSubmit();
   };
+  
   const onSubmit = async (formData: FormData) => {
     const title = formData.get("title") as string;
     const id = board.id;

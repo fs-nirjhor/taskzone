@@ -41,7 +41,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   } catch (error: any) {
     return { error: error.message as string };
   }
-  revalidatePath(`/dashboard/${board.id}`);
+  revalidatePath(`/organization/${orgId}`);
   return { data: board };
 };
 
