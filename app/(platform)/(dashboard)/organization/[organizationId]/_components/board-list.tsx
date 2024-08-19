@@ -18,18 +18,18 @@ export const BoardList = async () => {
   });
   return (
     <div className="space-y-4">
-      <div className="flex items-center gap-2 font-semibold text-lg text-neutral-700">
+      <div className="flex items-center gap-2 text-lg font-semibold text-neutral-700">
         <User2 className="size-6" /> <span>Your Boards</span>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
         {boards.map((board) => (
           <Link
             key={board.id}
             href={`/board/${board.id}`}
-            className="group relative aspect-video bg-no-repeat bg-center bg-cover bg-sky-700 rounded-sm size-full overflow-hidden"
+            className="group relative aspect-video size-full overflow-hidden rounded-sm bg-sky-700 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${board.imageThumbUrl})` }}
           >
-            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition p-2">
+            <div className="absolute inset-0 bg-black/30 p-2 transition group-hover:bg-black/40">
               <p className="relative font-semibold text-white">{board.title}</p>
             </div>
           </Link>
@@ -37,7 +37,7 @@ export const BoardList = async () => {
         <FormPopover sideOffset={10} side="right">
           <div
             role="button"
-            className="aspect-video relative size-full bg-muted rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity-75 transition"
+            className="relative flex aspect-video size-full flex-col items-center justify-center gap-y-1 rounded-sm bg-muted transition hover:opacity-75"
           >
             <p className="text-sm">Create New Board</p>
             <span className="text-sm">5 Remaining</span>
@@ -55,12 +55,12 @@ export const BoardList = async () => {
 };
 
 BoardList.SkeletonItem = function BoardListSkeletonItem() {
-  return <Skeleton className="size-full aspect-video" />;
+  return <Skeleton className="aspect-video size-full" />;
 };
 
 BoardList.Skeleton = function BoardListSkeleton() {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
       <BoardList.SkeletonItem />
       <BoardList.SkeletonItem />
       <BoardList.SkeletonItem />

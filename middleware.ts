@@ -16,10 +16,12 @@ export default clerkMiddleware((auth, req) => {
 
   //* logged in user can't visit public route
   if (isPublicRoute && userId) {
-    const orgRedirectPath = orgId ? `/organization/${orgId}` : "/select-organization";
+    const orgRedirectPath = orgId
+      ? `/organization/${orgId}`
+      : "/select-organization";
     return NextResponse.redirect(new URL(orgRedirectPath, req.url));
   }
-  
+
   //* logged in user must have an organization
   if (userId && !orgId && req.nextUrl.pathname !== "/select-organization") {
     return NextResponse.redirect(new URL("/select-organization", req.url));

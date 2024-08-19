@@ -30,14 +30,13 @@ export const FormPopover = ({
   align,
   sideOffset,
 }: FormPopoverProps) => {
-
   const router = useRouter();
   const closeRef = useRef<ElementRef<"button">>(null);
   const { execute, fieldErrors, isLoading } = UseAction(createBoard, {
     onSuccess: (data) => {
       toast.success("Board created");
       closeRef.current?.click();
-      router.push(`board/${data.id}`);
+      router.push(`/board/${data.id}`);
     },
     onError: (error) => {
       toast.error(error);
@@ -50,19 +49,21 @@ export const FormPopover = ({
   };
   return (
     <Popover>
-      <PopoverTrigger ref={closeRef} asChild>{children}</PopoverTrigger>
+      <PopoverTrigger ref={closeRef} asChild>
+        {children}
+      </PopoverTrigger>
       <PopoverContent
         align={align}
         side={side}
         sideOffset={sideOffset}
         className="w-80 pt-3"
       >
-        <div className="text-sm font-medium text-center text-neutral-600 pb-4">
+        <div className="pb-4 text-center text-sm font-medium text-neutral-600">
           Create Board
         </div>
         <PopoverClose asChild>
           <Button
-            className="size-auto p-2 absolute top-2 right-2 text-neutral-600"
+            className="absolute right-2 top-2 size-auto p-2 text-neutral-600"
             variant="ghost"
             size="sm"
           >

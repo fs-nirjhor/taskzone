@@ -3,6 +3,7 @@
 ## [Live View](https://taskzone.vercel.app)
 
 ### Key Features:
+
 - Next.js 14 with React
 - TypeScript
 - Design with shadcnUI & TailwindCSS
@@ -24,4 +25,3 @@
 - Stripe subscription for each organization to unlock unlimited boards
 - PostgreSQL DB
 - Prisma ORM
-

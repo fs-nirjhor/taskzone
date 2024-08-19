@@ -19,7 +19,7 @@ export const Sidebar = ({
 }: SidebarProps) => {
   const [expanded, setExpanded] = useLocalStorage<Record<string, any>>(
     storageKey,
-    {}
+    {},
   );
   const { organization: activeOrganization, isLoaded: isLoadedOrg } =
     useOrganization();
@@ -41,7 +41,7 @@ export const Sidebar = ({
     return (
       <>
         <div className="mb-2 flex items-center justify-between">
-          <Skeleton className="pl-4 w-1/2 h-3" />
+          <Skeleton className="h-3 w-1/2 pl-4" />
           <Skeleton className="size-5" />
         </div>
         <div className="space-y-2">
@@ -55,7 +55,7 @@ export const Sidebar = ({
 
   return (
     <>
-      <div className="font-medium text-xs mb-1 flex items-center justify-between">
+      <div className="mb-1 flex items-center justify-between text-xs font-medium">
         <span className="pl-4">Workspaces</span>
         <Button variant="ghost" size="icon" type="button">
           <Link href="/select-organization">

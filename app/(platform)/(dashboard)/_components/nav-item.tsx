@@ -2,7 +2,11 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 
-import { AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Activity, CreditCard, Layout, Settings } from "lucide-react";
 
 import { OrganizationResource } from "@clerk/types";
@@ -28,22 +32,22 @@ export const NavItem = ({
   const routes = [
     {
       label: "Boards",
-      icon: <Layout className="size-4 mr-2" />,
+      icon: <Layout className="mr-2 size-4" />,
       href: `/organization/${organization?.id}`,
     },
     {
       label: "Activity",
-      icon: <Activity className="size-4 mr-2" />,
+      icon: <Activity className="mr-2 size-4" />,
       href: `/organization/${organization?.id}/activity`,
     },
     {
       label: "Settings",
-      icon: <Settings className="size-4 mr-2" />,
+      icon: <Settings className="mr-2 size-4" />,
       href: `/organization/${organization?.id}/settings`,
     },
     {
       label: "Billing",
-      icon: <CreditCard className="size-4 mr-2" />,
+      icon: <CreditCard className="mr-2 size-4" />,
       href: `/organization/${organization?.id}/billing`,
     },
   ];
@@ -57,12 +61,12 @@ export const NavItem = ({
       <AccordionTrigger
         onClick={() => onExpand(organization?.id)}
         className={cn(
-          "flex items-center gap-x-2 p-1.5 rounded-md text-neutral-700 hover:bg-neutral-500/10 transition text-start no-underline hover:no-underline",
-          isActive && !isExpanded && "bg-sky-500/10 text-sky-700"
+          "flex items-center gap-x-2 rounded-md p-1.5 text-start text-neutral-700 no-underline transition hover:bg-neutral-500/10 hover:no-underline",
+          isActive && !isExpanded && "bg-sky-500/10 text-sky-700",
         )}
       >
         <div className="flex items-center gap-x-2">
-          <div className="size-7 relative">
+          <div className="relative size-7">
             <Image
               src={organization?.imageUrl}
               alt={organization?.name}
@@ -70,10 +74,10 @@ export const NavItem = ({
               className="rounded-sm object-cover"
             />
           </div>
-          <h4 className="font-medium text-sm">{organization?.name}</h4>
+          <h4 className="text-sm font-medium">{organization?.name}</h4>
         </div>
       </AccordionTrigger>
-      <AccordionContent className="pt-1 text-neutral-700 px-2">
+      <AccordionContent className="px-2 pt-1 text-neutral-700">
         {routes.map((route) => (
           <Button
             key={route.href}
@@ -81,8 +85,8 @@ export const NavItem = ({
             variant="ghost"
             onClick={() => onClick(route.href)}
             className={cn(
-              "w-full font-normal justify-start pl-10 mb-1 hover:bg-neutral-500/10 transition text-start no-underline hover:no-underline",
-              pathname === route.href && "bg-sky-500/10 text-sky-700"
+              "mb-1 w-full justify-start pl-10 text-start font-normal no-underline transition hover:bg-neutral-500/10 hover:no-underline",
+              pathname === route.href && "bg-sky-500/10 text-sky-700",
             )}
           >
             {route.icon}
@@ -94,9 +98,11 @@ export const NavItem = ({
   );
 };
 
-NavItem.Skeleton = function NavItemSkeleton () {
-  return <div className="w-full flex items-center gap-x-2">
-    <Skeleton className="size-7" />
-    <Skeleton className="w-1/2 h-3" />
-  </div>;
-}
+NavItem.Skeleton = function NavItemSkeleton() {
+  return (
+    <div className="flex w-full items-center gap-x-2">
+      <Skeleton className="size-7" />
+      <Skeleton className="h-3 w-1/2" />
+    </div>
+  );
+};

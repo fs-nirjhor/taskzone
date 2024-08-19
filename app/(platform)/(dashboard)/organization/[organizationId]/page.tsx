@@ -9,11 +9,11 @@ export default async function OrganizationIdPage({
   params: { organizationId: string };
 }) {
   return (
-    <section className="w-full mb-20">
+    <section className="mb-20 w-full">
       <Info />
       <Separator className="my-4" />
       <div className="px-4 md:px-4">
-        <Suspense fallback={<BoardList.Skeleton />} >
+        <Suspense fallback={<BoardList.Skeleton />}>
           <BoardList />
         </Suspense>
       </div>

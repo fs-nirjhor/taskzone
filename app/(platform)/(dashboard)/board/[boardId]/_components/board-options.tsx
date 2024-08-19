@@ -32,13 +32,13 @@ export const BoardOptions = ({ id }: BoardOptionsProps) => {
           <MoreHorizontal className="size-4" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="pt-3 pb-3 px-0" side="bottom" align="start">
-        <div className="text-sm font-medium text-center text-neutral-600 pb-4">
+      <PopoverContent className="px-0 pb-3 pt-3" side="bottom" align="start">
+        <div className="pb-4 text-center text-sm font-medium text-neutral-600">
           Board Actions
         </div>
         <PopoverClose asChild>
           <Button
-            className="size-auto p-2 absolute top-2 right-2 text-neutral-600"
+            className="absolute right-2 top-2 size-auto p-2 text-neutral-600"
             variant="ghost"
           >
             <X className="size-4" />
@@ -46,7 +46,7 @@ export const BoardOptions = ({ id }: BoardOptionsProps) => {
         </PopoverClose>
         <Button
           variant="ghost"
-          className="rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm"
+          className="h-auto w-full justify-start rounded-none p-2 px-5 text-sm font-normal"
           disabled={isLoading}
           onClick={onDelete}
         >

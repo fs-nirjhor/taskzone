@@ -7,7 +7,7 @@ export default function MarketingLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="h-full flex flex-col justify-between bg-slate-100">
+    <main className="flex h-full flex-col justify-between bg-slate-100">
       <Navbar />
       {children}
       <Footer />

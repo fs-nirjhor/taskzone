@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 import { ActionState, FieldErrors } from "@/lib/create-safe-action";
 
 type Action<TInput, TOutput> = (
-  data: TInput
+  data: TInput,
 ) => Promise<ActionState<TInput, TOutput>>;
 
 interface UseActionOptions<TOutput> {
@@ -15,7 +15,7 @@ interface UseActionOptions<TOutput> {
 
 export const UseAction = <TInput, TOutput>(
   action: Action<TInput, TOutput>,
-  options: UseActionOptions<TOutput> = {}
+  options: UseActionOptions<TOutput> = {},
 ) => {
   const [data, setData] = useState<TOutput | undefined>(undefined);
   const [fieldErrors, setFieldErrors] = useState<
@@ -50,7 +50,7 @@ export const UseAction = <TInput, TOutput>(
         options.onComplete?.();
       }
     },
-    [action, options]
+    [action, options],
   );
   return { data, fieldErrors, error, isLoading, execute };
 };

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { forwardRef } from "react";
 import { useFormStatus } from "react-dom";
 import { Label } from "@/components/ui/label";
@@ -33,7 +33,7 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
       defaultValue = "",
       onBlur,
     },
-    ref
+    ref,
   ) => {
     const { pending } = useFormStatus();
     return (
@@ -42,29 +42,29 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
           {label ? (
             <Label
               htmlFor={id}
-              className="text-xs font-semibold text-neutral-700 capitalize"
+              className="text-xs font-semibold capitalize text-neutral-700"
             >
               {label}
             </Label>
           ) : null}
           <Input
-            id = {id}
-            name = {id}
-            type = {type}
-            placeholder = {placeholder}
-            required = {required}
-            disabled = {disabled || pending}
-            defaultValue = {defaultValue}
-            onBlur = {onBlur}
-            className = {cn("text-sm px-2 py-1 h-8", className)}
+            id={id}
+            name={id}
+            type={type}
+            placeholder={placeholder}
+            required={required}
+            disabled={disabled || pending}
+            defaultValue={defaultValue}
+            onBlur={onBlur}
+            className={cn("h-8 px-2 py-1 text-sm", className)}
             aria-describedby={`${id}-error`}
             ref={ref}
           />
         </div>
-        <FormErrors id={id} errors={errors} /> 
+        <FormErrors id={id} errors={errors} />
       </div>
     );
-  }
+  },
 );
 
 FormInput.displayName = "FormInput";

@@ -51,21 +51,21 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
 
   if (isLoading) {
     return (
-      <div className="p-6 flex items-center justify-center">
-        <Loader2 className="size-6 text-sky-700 animate-spin" />
+      <div className="flex items-center justify-center p-6">
+        <Loader2 className="size-6 animate-spin text-sky-700" />
       </div>
     );
   }
 
   return (
     <div className="relative">
-      <div className="grid grid-cols-3 gap-2 mb-2">
+      <div className="mb-2 grid grid-cols-3 gap-2">
         {images.map((image) => (
           <div
             key={image.id}
             className={cn(
-              "cursor-pointer relative aspect-video group hover:opacity-75 transition bg-muted",
-              pending && "opacity-50 hover:opacity-50 cursor-auto"
+              "group relative aspect-video cursor-pointer bg-muted transition hover:opacity-75",
+              pending && "cursor-auto opacity-50 hover:opacity-50",
             )}
             onClick={() => {
               if (pending) return;
@@ -85,19 +85,19 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
             <Image
               src={image.urls.thumb}
               alt="Unsplash"
-              className="object-cover rounded-sm"
+              className="rounded-sm object-cover"
               priority={selectedimageId === image.id}
               fill
             />
             {selectedimageId === image.id && (
-              <div className="size-full absolute top-0 left-0 bg-black/50 flex items-center justify-center">
+              <div className="absolute left-0 top-0 flex size-full items-center justify-center bg-black/50">
                 <Check className="size-4 text-white" />
               </div>
             )}
             <Link
               href={image.links.html}
               target="_blank"
-              className="opacity-0 group-hover:opacity-100 absolute bottom-0 w-full text-[10px] truncate text-white hover:underline bg-black/30 text-center"
+              className="absolute bottom-0 w-full truncate bg-black/30 text-center text-[10px] text-white opacity-0 hover:underline group-hover:opacity-100"
             >
               {image.user.name}
             </Link>

@@ -1,10 +1,13 @@
 //* Prisma commands
 //TODO: run `npm i -D prisma` to install
 //TODO: run `npx prisma init` to initiate prisma setup
-//TODO: run `npx prisma generate` when create or modify a model 
-//TODO: run `npx prisma db push` to sync database with cloud
 //TODO: run `npx prisma studio` to view database
-//TODO: run `npx prisma migrate reset` to reset database
+//TODO: run `npx prisma db push` to sync database with cloud
+//TODO: run `npx prisma generate` to generate prisma client 
+
+//TODO: run `npx prisma migrate reset` to reset existing database
+
+//TODO: reset, push & generate in order when modify a model 
 
 generator client {
   provider = "prisma-client-js"
@@ -18,15 +21,44 @@ datasource db {
 }
 
 model Board {
-  id    String @id @default(uuid())
+  id    String @id @unique @default(uuid())
   orgId String
   title String
 
   imageId       String
   imageUserName String @db.Text
-  imageThumbUrl  String @db.Text
+  imageThumbUrl String @db.Text
   imageFullUrl  String @db.Text
   imageLinkHTML String @db.Text
+
+  list List[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model List {
+  id    String @id @unique @default(uuid())
+  order Int
+  title String
+
+  boardId String
+  board   Board  @relation(fields: [boardId], references: [id], onDelete: Cascade)
+
+  cards Card[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Card {
+  id          String @id @unique @default(uuid())
+  order       Int
+  title       String
+  description String
+
+  listId String
+  list   List   @relation(fields: [listId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

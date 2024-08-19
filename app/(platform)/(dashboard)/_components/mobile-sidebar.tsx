@@ -30,8 +30,13 @@ export const MobileSidebar = () => {
   }
   return (
     <>
-      <Button size="icon" variant="ghost" className="block md:hidden" onClick={onOpen}>
-        <Menu className="size-6 mx-auto" />
+      <Button
+        size="icon"
+        variant="ghost"
+        className="block md:hidden"
+        onClick={onOpen}
+      >
+        <Menu className="mx-auto size-6" />
       </Button>
       <Sheet open={isOpen} onOpenChange={onClose}>
         <SheetContent side="left" className="p-2 pt-10">

@@ -12,7 +12,7 @@ export const Info = () => {
 
   return (
     <figure className="flex items-center gap-x-4">
-      <div className="size-16 relative">
+      <div className="relative size-16">
         <Image
           fill
           src={organization?.imageUrl as string}
@@ -21,7 +21,7 @@ export const Info = () => {
         />
       </div>
       <div className="space-y-1">
-        <h3 className="font-semibold text-xl">{organization?.name}</h3>
+        <h3 className="text-xl font-semibold">{organization?.name}</h3>
         <div className="flex items-center gap-1 text-xs text-muted-foreground">
           <CreditCard className="size-3" />
           <span>Free</span>
@@ -34,8 +34,8 @@ export const Info = () => {
 Info.Skeleton = function InfoSkeleton() {
   return (
     <figure className="flex items-center gap-x-4">
-      <div className="size-16 relative">
-        <Skeleton className="size-full absolute" />
+      <div className="relative size-16">
+        <Skeleton className="absolute size-full" />
       </div>
       <div className="space-y-1">
         <Skeleton className="h-6 w-52" />
