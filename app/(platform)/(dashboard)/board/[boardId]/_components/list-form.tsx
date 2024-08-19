@@ -8,3 +8,4 @@ interface ListFormProps {
 export default function ListForm({ boardId, data }: ListFormProps) {
   return <div className="">List-Form</div>;
 }
+
