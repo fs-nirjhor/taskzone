@@ -1,12 +1,14 @@
-//* Prisma commands
-//TODO: run `npm i -D prisma` to install
-//TODO: run `npx prisma init` to initiate prisma setup
-//TODO: run `npx prisma studio` to view database
-//TODO: run `npx prisma db push` to sync database with cloud
-//TODO: run `npx prisma generate` to generate prisma client 
+// Prisma commands
+//* run `npm i -D prisma` to install prisma
+//* run `npm i @prisma/client` to install prisma/client
+//* run `npx prisma init` to initiate prisma setup
+//* run `npx prisma db push` to sync database with cloud
+//* run `npx prisma generate` to generate prisma client 
+//* run `npx prisma studio` to view database
 
-//TODO: run `npx prisma migrate reset` to reset existing database
+//* run `npx prisma migrate reset` to reset existing database
 
+//TODO: install prisma & prisma/client, init, push, generate to start project 
 //TODO: reset, push & generate in order when modify a model 
 
 generator client {
@@ -39,7 +41,7 @@ model Board {
 
 model List {
   id    String @id @unique @default(uuid())
-  order Int
+  order Int    @unique
   title String
 
   boardId String
@@ -53,7 +55,7 @@ model List {
 
 model Card {
   id          String @id @unique @default(uuid())
-  order       Int
+  order       Int    @unique
   title       String
   description String
 
