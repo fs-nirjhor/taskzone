@@ -10,7 +10,7 @@ interface ListContainerProps {
 export const ListContainer = ({ boardId, data }: ListContainerProps) => {
   return (
     <ol>
-      <ListForm boardId={boardId} data={data} />
+      <ListForm />
       <div className="w-1 flex-shrink-0" />
     </ol>
   );
