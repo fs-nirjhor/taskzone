@@ -15,6 +15,7 @@ interface BoardTitleFormProps {
 export const BoardTitleForm = ({ data }: BoardTitleFormProps) => {
   const [board, setBoard] = useState<Board>(data);
   const [isEditing, setIsEditing] = useState<boolean>(false);
+
   const formRef = useRef<ElementRef<"form">>(null);
   const inputRef = useRef<ElementRef<"input">>(null);
 
