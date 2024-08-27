@@ -1,3 +1,4 @@
+import { copyList } from "@/actions/copy-list";
 import { deleteList } from "@/actions/delete-list";
 import { FormSubmit } from "@/components/form/form-submit";
 import { Button } from "@/components/ui/button";
@@ -30,11 +31,26 @@ export const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
       toast.error(error);
     },
   });
+  const { execute: executeCopy } = UseAction(copyList, {
+    onSuccess: (data) => {
+      toast.success(`List ${data.title} copied`);
+      closeRef.current?.click();
+    },
+    onError: (error) => {
+      toast.error(error);
+    },
+  });
 
   const onDelete = (formData: FormData) => {
     const id = formData.get("id") as string;
     const boardId = formData.get("boardId") as string;
     executeDelete({ id, boardId });
+  };
+
+  const onCopy = (formData: FormData) => {
+    const id = formData.get("id") as string;
+    const boardId = formData.get("boardId") as string;
+    executeCopy({ id, boardId });
   };
 
   return (
@@ -56,6 +72,7 @@ export const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
             <X className="size-4" />
           </Button>
         </PopoverClose>
+        {/* Add card */}
         <Button
           onClick={onAddCard}
           variant="ghost"
@@ -64,7 +81,8 @@ export const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
           Add card
         </Button>
         <Separator />
-        <form>
+        {/* Copy list */}
+        <form action={onCopy}>
           <input type="hidden" name="id" id="id" value={data.id} />
           <input
             type="hidden"
@@ -80,6 +98,7 @@ export const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
           </FormSubmit>
         </form>
         <Separator />
+        {/* Delete list */}
         <form action={onDelete}>
           <input type="hidden" name="id" id="id" value={data.id} />
           <input
