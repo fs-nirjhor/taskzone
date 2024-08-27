@@ -6,6 +6,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Separator } from "@/components/ui/separator";
 import { List } from "@prisma/client";
 import { MoreHorizontal, X } from "lucide-react";
 
@@ -23,9 +24,9 @@ export const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="px-0 pb-3 pt-3" side="bottom" align="start">
-        <div className="pb-4 text-center text-sm font-medium text-neutral-500">
+        <h3 className="pb-4 text-center text-sm font-medium text-neutral-500">
           List Actions
-        </div>
+        </h3>
         <PopoverClose asChild>
           <Button
             className="absolute right-2 top-2 size-auto p-2 text-neutral-600"
@@ -39,8 +40,9 @@ export const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
           variant="ghost"
           className="h-auto w-full justify-start rounded-none p-2 px-5 text-sm font-normal"
         >
-          Add Card
+          Add card
         </Button>
+        <Separator />
         <form>
           <input type="hidden" name="id" id="id" value={data.id} />
           <input
@@ -53,7 +55,23 @@ export const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
             variant="ghost"
             className="h-auto w-full justify-start rounded-none p-2 px-5 text-sm font-normal"
           >
-            Copy List
+            Copy list
+          </FormSubmit>
+        </form>
+        <Separator />
+        <form>
+          <input type="hidden" name="id" id="id" value={data.id} />
+          <input
+            type="hidden"
+            name="boardId"
+            id="boardId"
+            value={data.boardId}
+          />
+          <FormSubmit
+            variant="ghost"
+            className="h-auto w-full justify-start rounded-none p-2 px-5 text-sm font-normal"
+          >
+            Delete this list
           </FormSubmit>
         </form>
       </PopoverContent>
