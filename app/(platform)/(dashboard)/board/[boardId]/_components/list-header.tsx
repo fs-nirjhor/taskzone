@@ -51,8 +51,7 @@ export const ListHeader = ({ data }: ListHeaderProps) => {
     if (title === data.title) {
       return disableEditing();
     }
-    alert(title);
-    // execute({ title, id, boardId });
+    execute({ title, id, boardId });
   };
 
   const onBlur = () => {
