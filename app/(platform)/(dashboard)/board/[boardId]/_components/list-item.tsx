@@ -1,6 +1,7 @@
 "use client";
 import { ListWithCards } from "@/types";
 import { useRef, useState } from "react";
+import { CardForm } from "./card-form";
 import { ListHeader } from "./list-header";
 
 interface ListItemProps {
@@ -29,6 +30,13 @@ export const ListItem = ({ index, data }: ListItemProps) => {
     <li className="h-full w-72 shrink-0 select-none">
       <div className="w-full rounded-md bg-[#f1f2f4] pb-2 shadow-md">
         <ListHeader data={data} onAddCard={enableEditing} />
+        <CardForm
+          listId={data.id}
+          ref={textareaRef}
+          isEditing={isEditing}
+          enableEditing={enableEditing}
+          disableEditing={disableEditing}
+        />
       </div>
     </li>
   );

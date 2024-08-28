@@ -54,10 +54,10 @@ model List {
 }
 
 model Card {
-  id          String @id @unique @default(uuid())
-  order       Int    @unique
+  id          String  @id @unique @default(uuid())
+  order       Int     @unique
   title       String
-  description String
+  description String? @db.Text
 
   listId String
   list   List   @relation(fields: [listId], references: [id], onDelete: Cascade)
