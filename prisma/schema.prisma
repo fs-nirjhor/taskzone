@@ -41,7 +41,7 @@ model Board {
 
 model List {
   id    String @id @unique @default(uuid())
-  order Int    @unique
+  order Int
   title String
 
   boardId String
@@ -55,7 +55,7 @@ model List {
 
 model Card {
   id          String  @id @unique @default(uuid())
-  order       Int     @unique
+  order       Int
   title       String
   description String? @db.Text
 
