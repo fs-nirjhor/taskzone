@@ -37,7 +37,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   } catch (error: any) {
     return { error: error.message as string };
   }
-  revalidatePath(`/organization/${orgId}`);
   revalidatePath(`/board/${boardId}`);
   return { data: list };
 };
