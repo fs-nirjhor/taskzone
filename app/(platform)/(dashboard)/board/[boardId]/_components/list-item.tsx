@@ -48,7 +48,7 @@ export const ListItem = ({ index, data }: ListItemProps) => {
                   {...provided.droppableProps}
                   ref={provided.innerRef}
                   className={cn(
-                    "mx-1 flex flex-col gap-y-2 px-1 py-0.5",
+                    "mx-1 flex max-h-48 flex-col gap-y-2 overflow-y-auto px-1 py-0.5",
                     data.cards.length > 0 ? "mt-2" : "mt-0",
                   )}
                 >
