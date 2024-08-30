@@ -1,7 +1,10 @@
 "use client";
+import { updateListOrder } from "@/actions/update-list-order";
+import { UseAction } from "@/hooks/use-action";
 import { ListWithCards } from "@/types";
 import { DragDropContext, Droppable, DropResult } from "@hello-pangea/dnd";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import ListForm from "./list-form";
 import { ListItem } from "./list-item";
 
@@ -26,6 +29,15 @@ function reorder<T>(list: T[], startIndex: number, endIndex: number) {
 export const ListContainer = ({ boardId, data }: ListContainerProps) => {
   const [orderedData, setOrderedData] = useState<ListWithCards[]>(data);
 
+  const { execute: executeUpdateListOrder } = UseAction(updateListOrder, {
+    onSuccess: () => {
+      toast.success(`List reordered`);
+    },
+    onError: (error) => {
+      toast.error(error);
+    },
+  });
+
   useEffect(() => {
     setOrderedData(data);
   }, [data]);
@@ -46,20 +58,20 @@ export const ListContainer = ({ boardId, data }: ListContainerProps) => {
       return;
     }
 
-    //? if user moves a "list"
+    //* if user moves a "list"
     if (type === "list") {
       const items = reorder(orderedData, source.index, destination.index).map(
         (item, index) => ({ ...item, order: index }),
       );
       setOrderedData(items);
-      // TODO: Trigger Server Action
+      executeUpdateListOrder({ items, boardId });
     }
 
-    //? if user moves a "card"
+    //* if user moves a "card"
     if (type === "card") {
       let newOrderData = [...orderedData];
 
-      //* find source and destination list
+      // find source and destination list
       const sourceList = newOrderData.find(
         (list) => list.id === source.droppableId,
       );
