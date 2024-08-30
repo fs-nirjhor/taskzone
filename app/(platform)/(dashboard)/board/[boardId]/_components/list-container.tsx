@@ -14,6 +14,7 @@ function reorder<T>(list: T[], startIndex: number, endIndex: number) {
   // creates a shallow copy
   const result = Array.from(list);
   // remove the element from the startIndex position
+  //// const removed = result.splice(startIndex, 1)[0];
   const [removed] = result.splice(startIndex, 1);
   // inserts the removed element back into the endIndex position
   result.splice(endIndex, 0, removed);
@@ -80,7 +81,7 @@ export const ListContainer = ({ boardId, data }: ListContainerProps) => {
         destList.cards = [];
       }
 
-      //* moving the card into same list
+      //* moving the card to same list
       if (source.droppableId === destination.droppableId) {
         const reorderedCards = reorder(
           sourceList.cards,
@@ -92,6 +93,29 @@ export const ListContainer = ({ boardId, data }: ListContainerProps) => {
           card.order = idx;
         });
         sourceList.cards = reorderedCards;
+
+        setOrderedData(newOrderData);
+        // TODO: Trigger Server Action
+      }
+
+      //* moving the card to another list
+      if (source.droppableId !== destination.droppableId) {
+        // remove the card from the source list
+        const [movedCard] = sourceList.cards.splice(source.index, 1);
+
+        // assign the new listId to the moved card
+        movedCard.listId = destination.droppableId;
+
+        // add card to the destination list
+        destList.cards.splice(destination.index, 0, movedCard);
+
+        // update the order for each card
+        sourceList.cards.forEach((card, idx) => {
+          card.order = idx;
+        });
+        destList.cards.forEach((card, idx) => {
+          card.order = idx;
+        });
 
         setOrderedData(newOrderData);
         // TODO: Trigger Server Action
