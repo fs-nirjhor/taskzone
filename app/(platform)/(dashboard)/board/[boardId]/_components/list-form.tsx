@@ -37,6 +37,7 @@ export default function ListForm() {
   const { execute, fieldErrors, isLoading } = UseAction(createList, {
     onSuccess: (result) => {
       toast.success(`List '${result.title}' created`);
+      formRef.current?.reset();
       router.refresh();
     },
     onError: (error) => {
