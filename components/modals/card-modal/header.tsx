@@ -3,21 +3,38 @@
 import { FormInput } from "@/components/form/form-input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CardWithList } from "@/types";
+import { useQueryClient } from "@tanstack/react-query";
 import { Layout } from "lucide-react";
-import { useState } from "react";
+import { useParams } from "next/navigation";
+import { ElementRef, useRef, useState } from "react";
 
 interface HeaderProps {
   data: CardWithList;
 }
 
 export const Header = ({ data }: HeaderProps) => {
+  const params = useParams();
+  const queryClient = useQueryClient();
+  const inputRef = useRef<ElementRef<"input">>(null);
+
   const [title, setTitle] = useState(data.title);
+
+  const onBlur = () => {
+    inputRef.current?.form?.requestSubmit();
+  };
+
+  const onSubmit = (formData: FormData) => {
+    alert(formData.get("title"));
+  };
+
   return (
     <div className="mb-6 flex w-full items-start gap-x-3">
       <Layout className="mt-1 size-5 text-neutral-700" />
       <div className="w-full">
-        <form>
+        <form action={onSubmit}>
           <FormInput
+            ref={inputRef}
+            onBlur={onBlur}
             id="title"
             defaultValue={title}
             className="relative -left-1.5 mb-0.5 w-[95%] truncate border-transparent bg-transparent px-1 text-xl font-semibold text-neutral-700 focus-visible:border-input focus-visible:bg-white"
